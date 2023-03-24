@@ -1,4 +1,10 @@
-@import-normalize; /* bring in normalize.css styles */
+:root {
+  --white: #ffffff;
+  --accent: #2196F3;
+  --shadow-color: rgba(0, 0, 0, .1);
+  --grey: #cccccc;
+  --bg-color: #F5F4FA;
+}
 
 body {
   margin: 0;
@@ -12,4 +18,14 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+h1,h2,h3,h4,h5,h6,p {
+  margin: 0;
 }

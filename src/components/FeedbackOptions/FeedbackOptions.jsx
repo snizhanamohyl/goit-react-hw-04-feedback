@@ -3,7 +3,7 @@ import {EmojiFrown, EmojiNeutral, EmojiSmile } from 'react-bootstrap-icons';
 import css from './FeedbackOptions.module.css';
 
 export default function FeedbackOptions({ options, onLeaveFeedback }) {
-    return <ul className={css["btn-list"]}>{options.map(option => {
+    const defineIcon = (option) => {
         let iconComponent;
 
         switch (option) {
@@ -18,10 +18,13 @@ export default function FeedbackOptions({ options, onLeaveFeedback }) {
                 break;
             default:
                 iconComponent = <EmojiSmile  className={ css.icon}/>;
-        }
-        
-        return <li key={option} className={css["btn-item"]}><button className={css.btn} onClick={onLeaveFeedback} option={option}><span className="value">{option}</span>{iconComponent}</button></li>
-    })}</ul>;
+        };
+
+        return iconComponent;
+    }
+
+    return <ul className={css["btn-list"]}>{options.map(option => <li key={option} className={css["btn-item"]}><button className={css.btn} onClick={onLeaveFeedback} option={option}><span className="value">{option}</span>{defineIcon()}</button></li>
+    )}</ul>;
 }
 
 FeedbackOptions.propTypes = {

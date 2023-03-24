@@ -4,11 +4,11 @@ import Section from './Section/Section';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import Statistics from './Statistics/Statistics';
 
-// const options = {
-//   GOOD: 'good',
-//   NEUTRAL: 'neutral',
-//   BAD: 'bad',
-// }
+const options = {
+  GOOD: 'good',
+  NEUTRAL: 'neutral',
+  BAD: 'bad',
+}
 
 export default function App() {
   const [good, setGood] = useState(0);
@@ -30,15 +30,15 @@ export default function App() {
     const chosenOption = currentTarget.attributes.option.value;
 
     switch (chosenOption) {
-      case 'good':
+      case options.GOOD:
         setGood(prev => prev + 1);
         break;
       
-      case 'neutral':
+      case options.NEUTRAL:
         setNeutral(prev => prev + 1);
         break;
       
-      case 'bad':
+      case options.BAD:
         setBad(prev => prev + 1);
         break;
     
@@ -51,7 +51,7 @@ export default function App() {
 
   return <div>
     <Section title="Please leave feedback">
-      <FeedbackOptions options={['good', 'neutral', 'bad']} onLeaveFeedback={onLeaveFeedback}></FeedbackOptions>
+      <FeedbackOptions options={Object.values(options)} onLeaveFeedback={onLeaveFeedback}></FeedbackOptions>
     </Section>
     {!countTotalFeedback() ? <Section><Notification message="There is no feedback"></Notification></Section> :
       <Section title="Statistics"><Statistics good={good} neutral={neutral} bad={bad} total={countTotalFeedback} positivePercentage={countPositiveFeedbackPercentage}></Statistics></Section>}
